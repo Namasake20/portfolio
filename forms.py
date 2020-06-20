@@ -1,7 +1,17 @@
 from django import forms
 
 
-class ContactForm(forms.Form):
-    name = forms.CharField(max_length=500, label="Name")
-    email = forms.EmailField(max_length=500, label="Email")
-    comment = forms.CharField(label="", widget=forms.Textarea(attrs={'placeholder': 'Enter your comment here'}))
+class CommentForm(forms.Form):
+    author = forms.CharField(
+        max_length=60,
+        widget=forms.TextInput(attrs={
+            "class": "form-control",
+            "placeholder": "Your Name"
+        })
+    )
+    body = forms.CharField(widget=forms.Textarea(
+        attrs={
+            "class": "form-control",
+            "placeholder": "Leave a comment!"
+        })
+    )
